@@ -135,7 +135,7 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
           ),
         ),
-        //Color SrartMenu
+        //Color Srart Menu
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,

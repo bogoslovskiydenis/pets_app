@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pets_app/menu_screen.dart';
+import 'package:pets_app/options_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: mainColor,
       ),
-      home: MenuScreen(),
+      home: OptionsScreen(),
     );
   }
 }
