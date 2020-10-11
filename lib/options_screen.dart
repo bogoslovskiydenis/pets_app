@@ -37,7 +37,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
       distanceToUser: '3.5 km',
       age: 1,
       isFemale: true,
-      imageUrl: "assets/images/1.jpg",
+      imageUrl: "assets/images/1-1.png",
       backgroundColor: Color.fromRGBO(203, 213, 216, 1.0),
     ),
     Animal(
@@ -46,7 +46,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
       distanceToUser: '3.5 km',
       age: 1,
       isFemale: true,
-      imageUrl: "assets/images/1.jpg",
+      imageUrl: "assets/images/7.jpg",
       backgroundColor: Color.fromRGBO(237, 214, 180, 1.0),
     ),
   ];
@@ -355,7 +355,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                                         ),
                                         Image(
                                           image: AssetImage(animal.imageUrl),
-                                          height: 220.0,
+                                          height: 200.0,
                                           width: deviceWidth * 0.4,
                                         ),
                                       ],alignment: Alignment.center,

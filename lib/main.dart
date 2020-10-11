@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pets_app/animal_detail_screen.dart';
 import 'package:pets_app/options_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: mainColor,
       ),
-      home: OptionsScreen(),
+      home: AnimalDetailsScreen(),
     );
   }
 }

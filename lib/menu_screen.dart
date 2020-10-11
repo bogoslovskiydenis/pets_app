@@ -82,7 +82,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 24.0,
-                      backgroundImage: AssetImage('assets/images/2.jpg'),
+                      backgroundImage: AssetImage('assets/images/1.jpg'),
                     ),
                     SizedBox(
                       width: 16.0,
