@@ -5,15 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'options_screen.dart';
 
 class AnimalDetailsScreen extends StatelessWidget {
-  final Animal animal = Animal(
-    name: 'sds',
-    scientificName: 'fsfsd',
-    distanceToUser: '3.5 km',
-    age: 1,
-    isFemale: true,
-    imageUrl: "assets/images/1-1.png",
-    backgroundColor: Color.fromRGBO(203, 213, 216, 1.0),
-  );
+  final Animal animal;
+
+  AnimalDetailsScreen({@required this.animal});
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +26,22 @@ class AnimalDetailsScreen extends StatelessWidget {
                     height: screenHeight * 0.5,
                     color: animal.backgroundColor,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 60.0 ),
-                      child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 60.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Icon(
-                                FontAwesomeIcons.arrowLeft,
-                                color: Theme.of(context).primaryColor,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  FontAwesomeIcons.arrowLeft,
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
                               Icon(
                                 CupertinoIcons.share,
@@ -54,9 +55,12 @@ class AnimalDetailsScreen extends StatelessWidget {
                   ),
                   Container(
                     height: screenHeight * 0.3,
-                    child: Image(
-                      image: AssetImage('assets/images/1-1.png'),
-                      fit: BoxFit.cover,
+                    child: Hero(
+                      tag: animal.name,
+                      child: Image(
+                        image: AssetImage('assets/images/1-1.png'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ],
@@ -207,9 +211,11 @@ class AnimalDetailsScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: 22.0,
             ),
-            child: Material(borderRadius: BorderRadius.circular(20.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(20.0),
               elevation: 8.0,
-              child: Container(padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -234,7 +240,8 @@ class AnimalDetailsScreen extends StatelessWidget {
                       height: 10.0,
                     ),
                     //Animal scientificName Style
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           animal.scientificName,

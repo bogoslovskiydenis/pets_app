@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pets_app/animal_detail_screen.dart';
 
 class Animal {
   String name;
@@ -23,6 +23,10 @@ class Animal {
 }
 
 class OptionsScreen extends StatefulWidget {
+  final Function menuCallBack;
+
+  OptionsScreen({@required this.menuCallBack});
+
   @override
   _OptionsScreenState createState() => _OptionsScreenState();
 }
@@ -116,117 +120,125 @@ class _OptionsScreenState extends State<OptionsScreen> {
     //split size box
     final deviceWidth = MediaQuery.of(context).size.width;
 
-    return Material(
-      child: Padding(
-        padding: EdgeInsets.only(top: 50.0),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              //Drawer menu
-              padding: EdgeInsets.symmetric(horizontal: 22.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Icon(FontAwesomeIcons.bars),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Location',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
-                            color: Theme.of(context)
-                                .primaryColor
-                                .withOpacity(0.4)),
-                      ),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.mapMarkedAlt,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          Text(
-                            'Kyiv, ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 20),
-                          ),
-                          Text(
-                            'Ukraine',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w300, fontSize: 20),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: AssetImage('1.jpg'),
-                  )
-                ],
-              ),
+    return Padding(
+      padding: EdgeInsets.only(top: 50.0),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            //Drawer menu
+            padding: EdgeInsets.symmetric(horizontal: 22.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                InkWell(
+                  child: Icon(FontAwesomeIcons.bars),
+                  onTap: widget.menuCallBack,
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      'Location',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                          color: Theme.of(context)
+                              .primaryColor
+                              .withOpacity(0.4)),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          FontAwesomeIcons.mapMarkedAlt,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        Text(
+                          'Kyiv, ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 20),
+                        ),
+                        Text(
+                          'Ukraine',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300, fontSize: 20),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('1.jpg'),
+                )
+              ],
             ),
-            //Low Menu Search etc
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Theme.of(context).primaryColor.withOpacity(0.05),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 20.0, horizontal: 22.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20.0)),
-                          padding: EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Row(
-                            children: <Widget>[
-                              Icon(FontAwesomeIcons.search),
-                              Expanded(
-                                child: TextField(
-                                  style: TextStyle(fontSize: 18.0),
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderSide: BorderSide.none),
-                                      hintText: "Search pets"),
-                                ),
+          ),
+          //Low Menu Search etc
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Theme.of(context).primaryColor.withOpacity(0.05),
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 22.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20.0)),
+                        padding: EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Row(
+                          children: <Widget>[
+                            Icon(FontAwesomeIcons.search),
+                            Expanded(
+                              child: TextField(
+                                style: TextStyle(fontSize: 18.0),
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide.none),
+                                    hintText: "Search pets"),
                               ),
-                              Icon(
-                                FontAwesomeIcons.filter,
-                                color: Colors.grey,
-                              )
-                            ],
-                          ),
+                            ),
+                            Icon(
+                              FontAwesomeIcons.filter,
+                              color: Colors.grey,
+                            )
+                          ],
                         ),
                       ),
+                    ),
 
-                      //Icon Pets
-                      Container(
-                        height: 110.0,
-                        child: ListView.builder(
-                            padding: EdgeInsets.only(left: 20.0),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: animalType.length,
-                            itemBuilder: (context, index) {
-                              return buildAnimalIcon(index);
-                            }),
-                      ),
+                    //Icon Pets
+                    Container(
+                      height: 110.0,
+                      child: ListView.builder(
+                          padding: EdgeInsets.only(left: 20.0),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: animalType.length,
+                          itemBuilder: (context, index) {
+                            return buildAnimalIcon(index);
+                          }),
+                    ),
 
-                      //Animals bottom menu
-                      Expanded(
-                        child: ListView.builder(padding: EdgeInsets.only(top:10.0),
-                            itemCount: animals.length,
-                            itemBuilder: (context, index) {
-                              final animal = animals[index];
+                    //Animals bottom menu
+                    Expanded(
+                      child: ListView.builder(
+                          padding: EdgeInsets.only(top: 10.0),
+                          itemCount: animals.length,
+                          itemBuilder: (context, index) {
+                            final animal = animals[index];
 
-                              return Padding(
+                            return GestureDetector(onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder:(context){
+                                return AnimalDetailsScreen(animal: animal);
+                              }));
+                            },
+                              child: Padding(
                                 padding: EdgeInsets.only(
                                     bottom: 28.0, right: 20.0, left: 20.0),
                                 child: Stack(
@@ -353,25 +365,28 @@ class _OptionsScreenState extends State<OptionsScreen> {
                                           height: 200.0,
                                           width: deviceWidth * 0.4,
                                         ),
-                                        Image(
-                                          image: AssetImage(animal.imageUrl),
-                                          height: 200.0,
-                                          width: deviceWidth * 0.4,
+                                        Hero(tag: animal.name,
+                                          child: Image(
+                                            image: AssetImage(animal.imageUrl),
+                                            height: 200.0,
+                                            width: deviceWidth * 0.4,
+                                          ),
                                         ),
-                                      ],alignment: Alignment.center,
+                                      ],
+                                      alignment: Alignment.center,
                                     )
                                   ],
                                 ),
-                              );
-                            }),
-                      )
-                    ],
-                  ),
+                              ),
+                            );
+                          }),
+                    )
+                  ],
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

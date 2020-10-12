@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pets_app/animal_detail_screen.dart';
-import 'package:pets_app/options_screen.dart';
+import 'package:pets_app/menu_frame.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: mainColor,
       ),
-      home: AnimalDetailsScreen(),
+      home: MenuFrame(),
     );
   }
 }
