@@ -142,9 +142,8 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 20,
-                          color: Theme.of(context)
-                              .primaryColor
-                              .withOpacity(0.4)),
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.4)),
                     ),
                     Row(
                       children: <Widget>[
@@ -233,14 +232,16 @@ class _OptionsScreenState extends State<OptionsScreen> {
                           itemBuilder: (context, index) {
                             final animal = animals[index];
 
-                            return GestureDetector(onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder:(context){
-                                return AnimalDetailsScreen(animal: animal);
-                              }));
-                            },
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return AnimalDetailsScreen(animal: animal);
+                                }));
+                              },
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                    bottom: 28.0, right: 20.0, left: 20.0),
+                                    bottom: 10.0, right: 20.0, left: 20.0),
                                 child: Stack(
                                   alignment: Alignment.centerLeft,
                                   children: <Widget>[
@@ -362,15 +363,13 @@ class _OptionsScreenState extends State<OptionsScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(20.0),
                                           ),
-                                          height: 200.0,
+                                          height: 190.0,
                                           width: deviceWidth * 0.4,
                                         ),
-                                        Hero(tag: animal.name,
-                                          child: Image(
-                                            image: AssetImage(animal.imageUrl),
-                                            height: 200.0,
-                                            width: deviceWidth * 0.4,
-                                          ),
+                                        Image(
+                                          image: AssetImage(animal.imageUrl),
+                                          height: 200.0,
+                                          width: deviceWidth * 0.4,
                                         ),
                                       ],
                                       alignment: Alignment.center,

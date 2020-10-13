@@ -59,7 +59,7 @@ class AnimalDetailsScreen extends StatelessWidget {
                       tag: animal.name,
                       child: Image(
                         image: AssetImage('assets/images/1-1.png'),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
                   ),

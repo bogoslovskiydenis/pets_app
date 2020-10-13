@@ -17,8 +17,7 @@ class _State extends State<MenuFrame> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController = AnimationController(vsync: this, duration: duration);
-    scaleAnimation =
-        Tween<double>(begin: 1.0, end: 0.6).animate(_animationController);
+    scaleAnimation = Tween<double>(begin: 1.0, end: 0.6).animate(_animationController);
   }
 
   @override
@@ -49,7 +48,7 @@ class _State extends State<MenuFrame> with SingleTickerProviderStateMixin {
                 absorbing: menuOpened,
                 child: Material(
                   animationDuration: duration,
-                  borderRadius: BorderRadius.circular(menuOpened ? 40.0 : 0.0),
+                  borderRadius: BorderRadius.circular(menuOpened ? 30.0 : 0.0),
                   child: OptionsScreen(
                     menuCallBack: () {
                       setState(() {
